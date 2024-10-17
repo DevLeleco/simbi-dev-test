@@ -49,6 +49,14 @@ final class Author extends Model
     }
 
     /**
+     * @return HasMany
+     */
+    public function loans(): HasMany
+    {
+        return $this->hasMany(Loan::class);
+    }
+
+    /**
      * @return Factory
      */
     protected static function newFactory(): Factory

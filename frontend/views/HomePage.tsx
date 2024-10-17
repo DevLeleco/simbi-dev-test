@@ -1,3 +1,4 @@
+"use client";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Paper from "@mui/material/Paper";
@@ -7,7 +8,6 @@ import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
 import { BooksList } from "@/features/components";
 import { Box } from "@mui/material";
-
 type ViewProps = {
   books: Book[];
 };

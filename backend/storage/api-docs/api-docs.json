@@ -331,6 +331,185 @@
                 }
             }
         },
+        "/api/loans/create": {
+            "post": {
+                "tags": [
+                    "Loans"
+                ],
+                "summary": "Adiciona um novo emprestimo na API",
+                "description": "Permite adicionar um novo emprestimo",
+                "operationId": "fa00e38f31f936e4936eb74b0a9e8df6",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "firstName",
+                                    "lastName"
+                                ],
+                                "properties": {
+                                    "first_name": {
+                                        "type": "string"
+                                    },
+                                    "last_name": {
+                                        "type": "string"
+                                    },
+                                    "cpf": {
+                                        "type": "string"
+                                    },
+                                    "phone": {
+                                        "type": "string"
+                                    },
+                                    "address": {
+                                        "type": "string"
+                                    },
+                                    "exit_date": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "last_date": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "authorId": {
+                                        "type": "string"
+                                    },
+                                    "bookId": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Loan Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string",
+                                            "example": "13b35be6-65a7-4d7f-9ad2-8caaf3c75344"
+                                        },
+                                        "first_name": {
+                                            "type": "string",
+                                            "example": "Primeiro nome"
+                                        },
+                                        "last_name": {
+                                            "type": "string",
+                                            "example": "Ultimo nome"
+                                        },
+                                        "cpf": {
+                                            "type": "string",
+                                            "example": "000.000.000-00"
+                                        },
+                                        "phone": {
+                                            "type": "string",
+                                            "example": "(00)0000-0000"
+                                        },
+                                        "address": {
+                                            "type": "string",
+                                            "example": "Endereço do cliente à realizar o emprestimo"
+                                        },
+                                        "lastName": {
+                                            "type": "string",
+                                            "example": "Ultimo nome"
+                                        },
+                                        "exitDate": {
+                                            "type": "string",
+                                            "example": "2022-12-14T22:24:26+00:00"
+                                        },
+                                        "deliveryDate": {
+                                            "type": "string",
+                                            "example": "2022-12-14T22:24:26+00:00"
+                                        },
+                                        "author": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string",
+                                                    "example": "13b35be6-65a7-4d7f-9ad2-8caaf3c75344"
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Autor Y"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "book": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string",
+                                                    "example": "13b35be6-65a7-4d7f-9ad2-8caaf3c75344"
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Book Z"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "createdAt": {
+                                            "type": "string",
+                                            "example": "2022-12-14T22:24:26+00:00"
+                                        },
+                                        "updatedAt": {
+                                            "type": "string",
+                                            "example": "2022-12-14T22:24:26+00:00"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Requisição com erro",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Bad Request"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Proibido",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Forbidden Error"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Não autorizado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthorized Error"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Erro interno",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Internal server error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/health": {
             "get": {
                 "tags": [
@@ -422,6 +601,143 @@
                 }
             }
         },
+        "/api/loans": {
+            "get": {
+                "tags": [
+                    "Loans"
+                ],
+                "summary": "Lista todos os emprestimos cadastrados na API",
+                "description": "Lista todos os emprestimos cadastrados.",
+                "operationId": "da1da231dd673e1cd157ba27ce4f70c9",
+                "responses": {
+                    "200": {
+                        "description": "Loans list",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "string",
+                                                "example": "13b35be6-65a7-4d7f-9ad2-8caaf3c75344"
+                                            },
+                                            "first_name": {
+                                                "type": "string",
+                                                "example": "Primeiro nome"
+                                            },
+                                            "last_name": {
+                                                "type": "string",
+                                                "example": "Ultimo nome"
+                                            },
+                                            "cpf": {
+                                                "type": "string",
+                                                "example": "000.000.000-00"
+                                            },
+                                            "phone": {
+                                                "type": "string",
+                                                "example": "(00)0000-0000"
+                                            },
+                                            "address": {
+                                                "type": "string",
+                                                "example": "Endereço do cliente à realizar o emprestimo"
+                                            },
+                                            "lastName": {
+                                                "type": "string",
+                                                "example": "Ultimo nome"
+                                            },
+                                            "exitDate": {
+                                                "type": "string",
+                                                "example": "2022-12-14T22:24:26+00:00"
+                                            },
+                                            "deliveryDate": {
+                                                "type": "string",
+                                                "example": "2022-12-14T22:24:26+00:00"
+                                            },
+                                            "author": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "string",
+                                                        "example": "13b35be6-65a7-4d7f-9ad2-8caaf3c75344"
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Autor Y"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "book": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "string",
+                                                        "example": "13b35be6-65a7-4d7f-9ad2-8caaf3c75344"
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Book Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "createdAt": {
+                                                "type": "string",
+                                                "example": "2022-12-14T22:24:26+00:00"
+                                            },
+                                            "updatedAt": {
+                                                "type": "string",
+                                                "example": "2022-12-14T22:24:26+00:00"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Requisição com erro",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Bad Request"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Proibido",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Forbidden Error"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Não autorizado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthorized Error"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Erro interno",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Internal server error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/authors/{id}/books": {
             "get": {
                 "tags": [
@@ -472,6 +788,304 @@
                                                     "name": {
                                                         "type": "string",
                                                         "example": "Autor Y"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "createdAt": {
+                                                "type": "string",
+                                                "example": "2022-12-14T22:24:26+00:00"
+                                            },
+                                            "updatedAt": {
+                                                "type": "string",
+                                                "example": "2022-12-14T22:24:26+00:00"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Requisição com erro",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Bad Request"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Proibido",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Forbidden Error"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Não autorizado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthorized Error"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Erro interno",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Internal server error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/loans/{id}/authors": {
+            "get": {
+                "tags": [
+                    "Loans"
+                ],
+                "summary": "Lista todos os emprestimos cadastrados na API para um determinado autor",
+                "description": "Lista todos os emprestimos cadastrados de um determinado autor.",
+                "operationId": "0e71b009f0510ca36190d3be3a78bcf0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do autor",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "2234f840-417e-4944-ac9b-e7e6eb06c590"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Loans list",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "string",
+                                                "example": "13b35be6-65a7-4d7f-9ad2-8caaf3c75344"
+                                            },
+                                            "first_name": {
+                                                "type": "string",
+                                                "example": "Primeiro nome"
+                                            },
+                                            "last_name": {
+                                                "type": "string",
+                                                "example": "Ultimo nome"
+                                            },
+                                            "cpf": {
+                                                "type": "string",
+                                                "example": "000.000.000-00"
+                                            },
+                                            "phone": {
+                                                "type": "string",
+                                                "example": "(00)0000-0000"
+                                            },
+                                            "address": {
+                                                "type": "string",
+                                                "example": "Endereço do cliente à realizar o emprestimo"
+                                            },
+                                            "lastName": {
+                                                "type": "string",
+                                                "example": "Ultimo nome"
+                                            },
+                                            "exitDate": {
+                                                "type": "string",
+                                                "example": "2022-12-14T22:24:26+00:00"
+                                            },
+                                            "deliveryDate": {
+                                                "type": "string",
+                                                "example": "2022-12-14T22:24:26+00:00"
+                                            },
+                                            "author": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "string",
+                                                        "example": "13b35be6-65a7-4d7f-9ad2-8caaf3c75344"
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Autor Y"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "book": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "string",
+                                                        "example": "13b35be6-65a7-4d7f-9ad2-8caaf3c75344"
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Book Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "createdAt": {
+                                                "type": "string",
+                                                "example": "2022-12-14T22:24:26+00:00"
+                                            },
+                                            "updatedAt": {
+                                                "type": "string",
+                                                "example": "2022-12-14T22:24:26+00:00"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Requisição com erro",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Bad Request"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Proibido",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Forbidden Error"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Não autorizado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthorized Error"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Erro interno",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Internal server error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/loans/{id}/books": {
+            "get": {
+                "tags": [
+                    "Loans"
+                ],
+                "summary": "Lista todos os emprestimos cadastrados na API para um determinado livro",
+                "description": "Lista todos os emprestimos cadastrados de um determinado livro. Obs: Supondo que há mais de 1 livro. kkkkkk...",
+                "operationId": "d961dff589613a68ac336a001f570681",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do livro",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "2234f840-417e-4944-ac9b-e7e6eb06c590"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Loans list",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "string",
+                                                "example": "13b35be6-65a7-4d7f-9ad2-8caaf3c75344"
+                                            },
+                                            "first_name": {
+                                                "type": "string",
+                                                "example": "Primeiro nome"
+                                            },
+                                            "last_name": {
+                                                "type": "string",
+                                                "example": "Ultimo nome"
+                                            },
+                                            "cpf": {
+                                                "type": "string",
+                                                "example": "000.000.000-00"
+                                            },
+                                            "phone": {
+                                                "type": "string",
+                                                "example": "(00)0000-0000"
+                                            },
+                                            "address": {
+                                                "type": "string",
+                                                "example": "Endereço do cliente à realizar o emprestimo"
+                                            },
+                                            "lastName": {
+                                                "type": "string",
+                                                "example": "Ultimo nome"
+                                            },
+                                            "exitDate": {
+                                                "type": "string",
+                                                "example": "2022-12-14T22:24:26+00:00"
+                                            },
+                                            "deliveryDate": {
+                                                "type": "string",
+                                                "example": "2022-12-14T22:24:26+00:00"
+                                            },
+                                            "author": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "string",
+                                                        "example": "13b35be6-65a7-4d7f-9ad2-8caaf3c75344"
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Autor Y"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "book": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "string",
+                                                        "example": "13b35be6-65a7-4d7f-9ad2-8caaf3c75344"
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Book Z"
                                                     }
                                                 },
                                                 "type": "object"
@@ -617,6 +1231,10 @@
         {
             "name": "Books",
             "description": "Books"
+        },
+        {
+            "name": "Loans",
+            "description": "Loans"
         },
         {
             "name": "Health Check",

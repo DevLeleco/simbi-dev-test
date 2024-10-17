@@ -2,14 +2,13 @@
 
 namespace App\Infra\Adapters\Persistence\Eloquent\Models;
 
-use Database\Factories\BookFactory;
+use Database\Factories\LoanFactory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
-final class Book extends Model
+class Loan extends Model
 {
     use HasFactory;
 
@@ -25,7 +24,7 @@ final class Book extends Model
      *
      * @var string
      */
-    protected $table = 'books';
+    protected $table = 'loans';
 
     /**
      * The data type of the auto-incrementing ID.
@@ -39,7 +38,7 @@ final class Book extends Model
      *
      * @var array
      */
-    protected $fillable = ['id', 'title', 'publisher', 'author_id'];
+    protected $fillable = ['id', 'first_name', 'last_name', 'cpf', 'phone', 'address', 'exit_date', 'delivery_date', 'author_id', 'book_id'];
 
     /**
      * @return BelongsTo
@@ -49,12 +48,12 @@ final class Book extends Model
         return $this->belongsTo(Author::class);
     }
 
-     /**
-     * @return HasMany
+    /**
+     * @return BelongsTo
      */
-    public function loans(): HasMany
+    public function book(): BelongsTo
     {
-        return $this->hasMany(Loan::class);
+        return $this->belongsTo(Book::class);
     }
 
     /**
@@ -62,6 +61,6 @@ final class Book extends Model
      */
     protected static function newFactory(): Factory
     {
-        return BookFactory::new();
+        return LoanFactory::new();
     }
 }

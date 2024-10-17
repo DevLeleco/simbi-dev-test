@@ -12,6 +12,7 @@
         "ans-group/laravel-health-check": "^1.13",
         "darkaonline/l5-swagger": "^8.4",
         "guzzlehttp/guzzle": "^7.2",
+        "kepka42/laravel-mapper": "^0.1.2",
         "laravel/framework": "^10.0",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.7",

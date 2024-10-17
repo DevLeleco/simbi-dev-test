@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "73522637bc3e3f65a4890f077da5964a",
+    "content-hash": "f8124c0ba082d0f1a8e6031b0ebcd865",
     "packages": [
         {
             "name": "ans-group/laravel-health-check",
@@ -1291,6 +1291,65 @@
                 }
             ],
             "time": "2023-12-03T19:50:20+00:00"
+        },
+        {
+            "name": "kepka42/laravel-mapper",
+            "version": "0.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kepka42/laravel-mapper.git",
+                "reference": "f6854eedb2c957bd4862b9055e1e5b76cceafb76"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kepka42/laravel-mapper/zipball/f6854eedb2c957bd4862b9055e1e5b76cceafb76",
+                "reference": "f6854eedb2c957bd4862b9055e1e5b76cceafb76",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "laravel/laravel": ">=5.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "kepka42\\LaravelMapper\\MapperServiceProvider"
+                    ],
+                    "aliases": {
+                        "Mapper": "kepka42\\LaravelMapper\\Facades\\Mapper"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "kepka42\\LaravelMapper\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vladislav Nevzorov",
+                    "email": "kepka4242@gmail.com"
+                }
+            ],
+            "description": "Package for map data",
+            "keywords": [
+                "laravel",
+                "map",
+                "mapper"
+            ],
+            "support": {
+                "issues": "https://github.com/kepka42/laravel-mapper/issues",
+                "source": "https://github.com/kepka42/laravel-mapper/tree/master"
+            },
+            "abandoned": true,
+            "time": "2019-01-28T03:30:48+00:00"
         },
         {
             "name": "laravel/framework",
@@ -11177,5 +11236,5 @@
         "php": "^8.2.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
